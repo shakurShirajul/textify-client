@@ -1,7 +1,9 @@
+import RecentBlogs from "./RecentBlogs/RecentBlogs";
+
 const Home = () => {
     return (
         <div>
-            {/* <h1>shirajul </h1> */}
+            <RecentBlogs/>
         </div>
     );
 };

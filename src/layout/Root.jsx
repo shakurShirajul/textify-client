@@ -4,8 +4,8 @@ import Nav from '../components/Nav';
 
 const Root = () => {
     return (
-        <div>
-            <h1 className='text-red-100'>Shirajul  Islam</h1>
+        // <div className='max-w-7xl mx-auto'>
+        <div className='container mx-auto'>
             <Nav></Nav>
             <Outlet></Outlet>
         </div>
