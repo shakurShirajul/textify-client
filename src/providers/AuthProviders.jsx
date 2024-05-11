@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, GithubAuthProvider, GoogleAuthProvider, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, GoogleAuthProvider, updateProfile } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { createContext } from "react";
 import auth from "../firebase/firebase.config";
@@ -31,6 +31,7 @@ const AuthProviders = ({ children }) => {
             photoURL: imageURL
         })
     }
+
     const logOut = () => {
         setLoader(true);
         return signOut(auth);
@@ -46,6 +47,7 @@ const AuthProviders = ({ children }) => {
             unSubscribe();
         }
     }, [])
+
 
     // Toast Design
 
@@ -96,7 +98,6 @@ const AuthProviders = ({ children }) => {
         signIn,
         signUp,
         updateUser,
-        githubSignIn,
         googleSignIn,
         logOut,
         updateToast,

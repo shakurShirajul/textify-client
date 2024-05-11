@@ -1,27 +1,10 @@
-import axios from "axios";
-import { useContext } from "react";
-import { AuthContext } from "../../../providers/AuthProviders";
-import { useQuery } from "@tanstack/react-query";
-import { ToastContainer } from "react-toastify";
+import React from 'react';
 
+const MyWishlist = ({ item }) => {
+    const { title, image, short_description, category, author_image, author_name, created_at } = item;
+    // const { user, updateToast, errorToast } = useContext(AuthContext)
 
-
-const RecentBlog = ({ post }) => {
-    const { title, image, short_description, category, author_image, author_name, created_at } = post;
-    const { user, updateToast, errorToast } = useContext(AuthContext)
-
-    const handleWishListButton = async () => {
-
-        const result = await axios.post('http://localhost:5000/wishlist', {
-            user_email: user.email,
-            blog_id: post._id,
-        });
-        if (result.status === 208) {
-            errorToast('Already Added To Wishlist');
-        } else if (result.status === 201) {
-            updateToast('Added To Wishlist');
-        }
-    }
+    console.log("Here", item)
     return (
         <div className="max-w-lg mx-auto font-inter">
             <div className="border rounded-xl p-5 space-y-4">
@@ -42,15 +25,15 @@ const RecentBlog = ({ post }) => {
                         <p className="text-right">Categrory: <span>{category}</span></p>
                     </div>
                     <div className="flex justify-end gap-2">
-                        <button onClick={handleWishListButton} type="button" class="text-white bg-blue-700 hover:bg-blue-800  font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none ">Add to Wishlist</button>
+                        <button type="button" class="text-white bg-blue-700 hover:bg-blue-800  font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none ">Remove From Wishlist</button>
                         <button type="button"
                             class="focus:outline-none text-white bg-[#20DC49] hover:bg-green-800  font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-[#20DC49] dark:hover:bg-green-700 ">View Details</button>
                     </div>
                 </div>
             </div>
-            <ToastContainer />
+            {/* <ToastContainer /> */}
         </div>
     );
 };
 
-export default RecentBlog;
+export default MyWishlist;

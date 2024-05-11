@@ -1,4 +1,5 @@
 import { FloatingLabel } from "flowbite-react";
+import { ToastContainer } from "react-toastify";
 
 const SignupForm = () => {
     return (
