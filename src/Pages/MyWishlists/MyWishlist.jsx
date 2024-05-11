@@ -1,8 +1,10 @@
 import React from 'react';
 
-const MyWishlist = ({ item }) => {
+const MyWishlist = ({ item, handleWishlistDelete }) => {
     const { title, image, short_description, category, author_image, author_name, created_at } = item;
     // const { user, updateToast, errorToast } = useContext(AuthContext)
+
+
 
     console.log("Here", item)
     return (
@@ -25,7 +27,9 @@ const MyWishlist = ({ item }) => {
                         <p className="text-right">Categrory: <span>{category}</span></p>
                     </div>
                     <div className="flex justify-end gap-2">
-                        <button type="button" class="text-white bg-blue-700 hover:bg-blue-800  font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none ">Remove From Wishlist</button>
+                        <button
+                            onClick={() => handleWishlistDelete(item._id)}
+                            type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Remove From Wishlist</button>
                         <button type="button"
                             class="focus:outline-none text-white bg-[#20DC49] hover:bg-green-800  font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-[#20DC49] dark:hover:bg-green-700 ">View Details</button>
                     </div>
