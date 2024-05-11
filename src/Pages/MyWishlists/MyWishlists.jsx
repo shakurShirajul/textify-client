@@ -5,32 +5,31 @@ import { useQuery } from "@tanstack/react-query";
 import CardSkeleton from "../../components/CardSkeleton";
 import 'react-loading-skeleton/dist/skeleton.css'
 import { AuthContext } from "../../providers/AuthProviders";
+import { ToastContainer } from "react-toastify";
 
 
 const MyWishlists = () => {
 
-    const { user } = useContext(AuthContext);
+    const { user, updateToast, errorToast } = useContext(AuthContext);
 
-    const [myWish, setMyWish] = useState([]);
-    const { data, isPending } = useQuery({
+
+    const { data: myWish, isPending, refetch } = useQuery({
         queryKey: ['recentPosts'],
         queryFn: async () => {
             const res = await axios.get(`http://localhost:5000/wishlists?email=${user.email}`);
-            setMyWish(res.data);
             return res.data;
         }
     })
+
     console.log(myWish);
 
     // Remove From Wishlist
     const handleWishlistDelete = (id) => {
-        console.log("delete", id);
         axios.delete(`http://localhost:5000/wishlist/${id}`)
             .then(res => {
                 if (res.data.deletedCount > 0) {
-                    const remaining = myWish.filter(item => item._id != id)
-                    setMyWish(remaining);
-                    console.log("remaining", remaining);
+                    updateToast("Remove Successfully");
+                    refetch();
                 }
             })
     }
@@ -50,6 +49,7 @@ const MyWishlists = () => {
                     )
                 }
             </div>
+            <ToastContainer />
         </div>
     );
 };

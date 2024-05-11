@@ -35,7 +35,6 @@ const MyWishlist = ({ item, handleWishlistDelete }) => {
                     </div>
                 </div>
             </div>
-            {/* <ToastContainer /> */}
         </div>
     );
 };

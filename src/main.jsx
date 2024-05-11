@@ -7,7 +7,6 @@ import "./index.css";
 import router from './Routes/router';
 import AuthProviders from './providers/AuthProviders';
 import {
-
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'

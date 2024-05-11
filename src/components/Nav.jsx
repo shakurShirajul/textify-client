@@ -41,7 +41,7 @@ const Nav = () => {
                 <NavbarCollapse>
                     <NavLink to="/" className={({ isActive }) => isActive && activeButton}><span className={buttonStyle}>Home</span></NavLink>
                     <NavLink to="/addblog" className={({ isActive }) => isActive && activeButton}><span className={buttonStyle}>Add Blog</span></NavLink>
-                    <NavLink to="/addItem" className={({ isActive }) => isActive && activeButton}><span className={buttonStyle}>All Blog</span></NavLink>
+                    <NavLink to="/allblogs" className={({ isActive }) => isActive && activeButton}><span className={buttonStyle}>All Blog</span></NavLink>
                     <NavLink to="/mylist" className={({ isActive }) => isActive && activeButton}><span className={buttonStyle}>Featured Blogs</span> </NavLink>
                     <NavLink to="/mywishlist" className={({ isActive }) => isActive && activeButton}><span className={buttonStyle}>Wishlist</span></NavLink>
                 </NavbarCollapse>
