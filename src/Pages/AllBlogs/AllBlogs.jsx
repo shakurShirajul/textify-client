@@ -11,7 +11,7 @@ const AllBlogs = () => {
 
     const queryClient = useQueryClient();
 
-    const { data: blogs, isPending, refetch } = useQuery({
+    const { data: blogs, isPending, isLoading } = useQuery({
         queryKey: ['blogs'],
         queryFn: async () => {
             const res = await axios.get(`http://localhost:5000/blogs`);
@@ -32,27 +32,34 @@ const AllBlogs = () => {
         queryClient.setQueryData(['blogs'], res.data);
     }
 
-    console.log(blogs)
+    // if (isPending) {
+    //     return <div>Shirajul .... ..... .... </div>
+    // }
 
     return (
         <div className="max-w-5xl mx-auto">
             {
-                isPending && <div className="grid grid-cols-2 gap-2">
-                    <CardSkeleton cards={6} />
-                </div>
+                isPending ?
+                    (
+                        <div className="grid grid-cols-2 gap-2">
+                            <CardSkeleton cards={6} />
+                        </div>
+                    ) : (
+                        <div>
+                            <div className="mb-10">
+                                <Search handleFormSubmit={handleFormSubmit} handleSelect={handleSelect} />
+                            </div>
+                            <div className="grid grid-cols-2 gap-5">
+                                {
+                                    blogs?.map(post =>
+                                        <RecentBlog key={post._id} post={post}></RecentBlog>
+                                    )
+                                }
+                            </div>
+                        </div>
+                    )
             }
-            <div>
-                <div className="mb-10">
-                    <Search handleFormSubmit={handleFormSubmit} handleSelect={handleSelect} />
-                </div>
-                <div className="grid grid-cols-2 gap-5">
-                    {
-                        blogs?.map(post =>
-                            <RecentBlog key={post._id} post={post}></RecentBlog>
-                        )
-                    }
-                </div>
-            </div>
+
         </div>
     );
 };
