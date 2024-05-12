@@ -1,17 +1,20 @@
-import { useQuery } from '@tanstack/react-query';
+import { QueryClient, useQuery } from '@tanstack/react-query';
 import Comment from './Comment';
 import axios from 'axios';
 import CommentBox from './CommentBox';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../providers/AuthProviders';
 
-const Comments = ({ blog_id }) => {
+const Comments = ({ blog_id, author_email }) => {
+
     const { user } = useContext(AuthContext);
+
+    let checkEmail = true;
 
     const { data: comments, isPending, isLoading, refetch } = useQuery({
         queryKey: ['comments'],
         queryFn: async () => {
-            const res = await axios.get(`http://localhost:5000/comments/6640380db58363b37966c7a5`);
+            const res = await axios.get(`http://localhost:5000/comments/${blog_id}`);
             return res.data;
         }
     })
@@ -33,10 +36,6 @@ const Comments = ({ blog_id }) => {
                 console.error('Error posting data:', error);
             });
     }
-
-    if (isLoading) {
-        return <div>Loading in the function......</div>
-    }
     return (
         <div>
             {
@@ -49,7 +48,9 @@ const Comments = ({ blog_id }) => {
                         <Comment comment={comment} />
                     )
                 }
-                <CommentBox handleCommentSubmit={handleCommentSubmit} />
+                {
+                    author_email === user?.email ? <></> : <CommentBox handleCommentSubmit={handleCommentSubmit} />
+                }
             </div>
         </div>
     );

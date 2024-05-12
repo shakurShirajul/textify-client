@@ -7,12 +7,13 @@ import AddBlog from "../Pages/AddBlog/AddBlog";
 import MyWishlists from "../Pages/MyWishlists/MyWishlists";
 import AllBlogs from "../Pages/AllBlogs/AllBlogs";
 import BlogDetails from "../Pages/BlogDetails/BlogDetails";
+import UpdateBlog from "../Pages/UpdateBlog/UpdateBlog";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Root></Root>,
-        children:[
+        children: [
             {
                 path: "/",
                 element: <Home></Home>
@@ -31,15 +32,19 @@ const router = createBrowserRouter([
             },
             {
                 path: "/mywishlist",
-                element: <MyWishlists/>,
+                element: <MyWishlists />,
             },
             {
                 path: "/allblogs",
-                element: <AllBlogs/>
+                element: <AllBlogs />
             },
             {
-                path:"/blogdetails/:id",
-                element:<BlogDetails/>,
+                path: "/blogdetails/:id",
+                element: <BlogDetails />,
+            },
+            {
+                path: "/updateblog/:id",
+                element: <UpdateBlog />
             }
         ]
     }

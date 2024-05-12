@@ -1,21 +1,29 @@
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Comments from '../../components/Comments';
 import CardSkeleton from '../../components/CardSkeleton';
 import 'react-loading-skeleton/dist/skeleton.css'
+import { useState } from 'react';
 
 const BlogDetails = () => {
 
     const { id: blog_id } = useParams();
-    const { data: blog, isPending, isLoading, refetch } = useQuery({
+
+    const { data: blog, isPending, isLoading } = useQuery({
         queryKey: ['blog'],
         queryFn: async () => {
             const res = await axios.get(`http://localhost:5000/blog/${blog_id}`);
             return res.data;
         }
     })
-    
+
+    let author_email;
+
+    if (!isPending) {
+        author_email = blog.author_email;
+    }
+
     return (
         <div className=''>
             {
@@ -26,7 +34,7 @@ const BlogDetails = () => {
                         </div>
                     ) :
                     (
-                        <div className='max-w-5xl mx-auto space-y-5 bg-white p-5 rounded-lg'>
+                        <div className='md:max-w-5xl mx-auto space-y-5 bg-white p-5 rounded-lg'>
                             <div className='space-y-2'>
                                 <h1 className='text-4xl font-bold font-grotsk'>{blog?.title}</h1>
                                 <p className='text-[20px] font-normal font-inter text-neutral-500'>{blog.short_description}</p>
@@ -55,12 +63,10 @@ const BlogDetails = () => {
                                 </div>
                                 <p className='text-xl font-newsreader'>{blog.long_description}</p>
                             </div>
-                            <Comments blog_id={blog_id} />
+                            <Comments blog_id={blog_id} author_email={author_email} />
                         </div>
-
                     )
             }
-
         </div>
 
     );

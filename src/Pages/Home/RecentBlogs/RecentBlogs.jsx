@@ -14,9 +14,6 @@ const RecentBlogs = () => {
         }
     })
 
-
-    console.log(recentPosts);
-
     return (
         <div className="max-w-5xl mx-auto">
             {
