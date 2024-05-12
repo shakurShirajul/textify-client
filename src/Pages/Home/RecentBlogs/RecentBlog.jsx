@@ -3,11 +3,12 @@ import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProviders";
 import { useQuery } from "@tanstack/react-query";
 import { ToastContainer } from "react-toastify";
+import { Link } from "react-router-dom";
 
 
 
 const RecentBlog = ({ post }) => {
-    const { title, image, short_description, category, author_image, author_name, created_at } = post;
+    const { _id, title, image, short_description, category, author_image, author_name, created_at } = post;
     const { user, updateToast, errorToast } = useContext(AuthContext)
 
     const handleWishListButton = async () => {
@@ -23,8 +24,8 @@ const RecentBlog = ({ post }) => {
         }
     }
     return (
-        <div className="max-w-lg mx-auto font-inter">
-            <div className="border rounded-xl p-5 space-y-4">
+        <div className="max-w-lg mx-auto font-inter ">
+            <div className="border rounded-xl p-5 space-y-4 bg-white">
                 <img className="object-cover w-full rounded-xl aspect-video" src={image} alt="" />
                 <div className="flex flex-col justify-between leading-normal gap-4">
                     <div className="flex items-center gap-2">
@@ -43,8 +44,9 @@ const RecentBlog = ({ post }) => {
                     </div>
                     <div className="flex justify-end gap-2">
                         <button onClick={handleWishListButton} type="button" class="text-white bg-blue-700 hover:bg-blue-800  font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none ">Add to Wishlist</button>
-                        <button type="button"
-                            class="focus:outline-none text-white bg-[#20DC49] hover:bg-green-800  font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-[#20DC49] dark:hover:bg-green-700 ">View Details</button>
+                        <Link type="button"
+                            to={`/blogdetails/${_id}`}
+                            class="focus:outline-none text-white bg-[#20DC49] hover:bg-green-800  font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-[#20DC49] dark:hover:bg-green-700 ">View Details</Link>
                     </div>
                 </div>
             </div>

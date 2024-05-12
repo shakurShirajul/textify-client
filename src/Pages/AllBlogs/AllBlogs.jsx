@@ -42,7 +42,7 @@ const AllBlogs = () => {
                 </div>
             }
             <div>
-                <div className="my-10">
+                <div className="mb-10">
                     <Search handleFormSubmit={handleFormSubmit} handleSelect={handleSelect} />
                 </div>
                 <div className="grid grid-cols-2 gap-5">

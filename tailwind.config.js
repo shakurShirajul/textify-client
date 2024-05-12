@@ -12,9 +12,11 @@ export default {
   ],
   theme: {
     extend: {},
-    fontFamily:{
+    fontFamily: {
       inter: ['Inter', 'sans-serif'],
       grotsk: ["Space Grotesk", 'sans-serif'],
+      martina: ["Martian Mono", 'monospace'],
+      newsreader: ["Newsreader", "serif"]
     }
   },
 }

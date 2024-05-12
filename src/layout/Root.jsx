@@ -4,10 +4,15 @@ import Nav from '../components/Nav';
 
 const Root = () => {
     return (
-        // <div className='max-w-7xl mx-auto'>
-        <div className='container mx-auto'>
-            <Nav></Nav>
-            <Outlet></Outlet>
+        <div>
+            <div className='container mx-auto '>
+                <div className='sticky'>
+                    <Nav></Nav>
+                </div>
+                <div className='mt-20 '>
+                    <Outlet></Outlet>
+                </div>
+            </div>
         </div>
     );
 };
