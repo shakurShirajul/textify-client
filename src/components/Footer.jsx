@@ -60,7 +60,7 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
-                <div className="py-6 text-sm text-center dark:text-gray-600">© 2024 Textify Co. All rights reserved.</div>
+                <div className="py-6 text-sm text-center font-medium dark:text-gray-600">© 2024 Textify Co. All rights reserved.</div>
             </footer>
         </div>
     );
