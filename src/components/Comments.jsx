@@ -49,7 +49,10 @@ const Comments = ({ blog_id, author_email }) => {
                     )
                 }
                 {
-                    author_email === user?.email ? <></> : <CommentBox handleCommentSubmit={handleCommentSubmit} />
+                    author_email === user?.email ?
+                        <></>
+                        :
+                        <CommentBox handleCommentSubmit={handleCommentSubmit} />
                 }
             </div>
         </div>

@@ -32,10 +32,6 @@ const AllBlogs = () => {
         queryClient.setQueryData(['blogs'], res.data);
     }
 
-    // if (isPending) {
-    //     return <div>Shirajul .... ..... .... </div>
-    // }
-
     return (
         <div className="max-w-5xl mx-auto">
             {
