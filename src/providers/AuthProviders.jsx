@@ -4,6 +4,7 @@ import { createContext } from "react";
 import auth from "../firebase/firebase.config";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 
@@ -39,8 +40,19 @@ const AuthProviders = ({ children }) => {
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
+            const userEmail = currentUser?.email || user?.email;
+            const loggedUser = { email: userEmail };
             console.log("Changed");
             setUser(currentUser);
+
+            // Issueing a token 
+            if (currentUser) {
+                axios.post(`https://textify-black.vercel.app/jwt`, loggedUser, { withCredentials: true })
+                    .then(res => console.log(res.data))
+            } else {
+                axios.post(`https://textify-black.vercel.app/logout`, loggedUser, { withCredentials: true })
+                .then(res=>{console.log(res.data)})
+            }
             setLoader(false);
         });
         return () => {

@@ -14,7 +14,7 @@ const AllBlogs = () => {
     const { data: blogs, isPending, isLoading } = useQuery({
         queryKey: ['blogs'],
         queryFn: async () => {
-            const res = await axios.get(`http://localhost:5000/blogs`);
+            const res = await axios.get(`https://textify-black.vercel.app/blogs`);
             return res.data;
         }
     })
@@ -22,13 +22,13 @@ const AllBlogs = () => {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         const serachText = event.target.searchText.value;
-        const res = await axios.get(`http://localhost:5000/blogs/search?title=${serachText}`);
+        const res = await axios.get(`https://textify-black.vercel.app/blogs/search?title=${serachText}`);
         queryClient.setQueryData(['blogs'], res.data);
     }
 
     const handleSelect = async (event) => {
         console.log(event.target.value);
-        const res = await axios.get(`http://localhost:5000/blogs?category=${event.target.value}`);
+        const res = await axios.get(`https://textify-black.vercel.app/blogs?category=${event.target.value}`);
         queryClient.setQueryData(['blogs'], res.data);
     }
 

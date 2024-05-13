@@ -32,7 +32,7 @@ const AddBlog = () => {
             author_name,
             author_image,
         }
-        const response = await axios.post('http://localhost:5000/blog/add', data,
+        const response = await axios.post('https://textify-black.vercel.app/blog/add', data,
             { headers: { 'Content-Type': 'application/json' } }
         )
 

@@ -13,7 +13,7 @@ const RecentBlog = ({ post }) => {
 
     const handleWishListButton = async () => {
 
-        const result = await axios.post('http://localhost:5000/wishlist', {
+        const result = await axios.post('https://textify-black.vercel.app/wishlist', {
             user_email: user.email,
             blog_id: post._id,
         });
