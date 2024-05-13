@@ -21,7 +21,7 @@ const AddBlog = () => {
         const author_name = user.name;
         const author_image = user.photoURL
 
-        console.log(long_description)
+        // console.log(long_description)
         const data = {
             title,
             image,
@@ -32,17 +32,36 @@ const AddBlog = () => {
             author_name,
             author_image,
         }
-        const response = await axios.post('https://textify-black.vercel.app/blog/add', data,
-            { headers: { 'Content-Type': 'application/json' } }
-        )
 
-        if (response.status === 201) {
-            Swal.fire({
-                title: "Blog Added Successfully!",
-                confirmButtonText: "OK"
+        // axios.post('https://textify-black.vercel.app/blog/add', data, { withCredentials: true }, {
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     }
+        // })
+        //     .then(response => {
+        //         if (response.status === 201) {
+        //             Swal.fire({
+        //                 title: "Blog Added Successfully!",
+        //                 confirmButtonText: "OK"
+        //             });
+        //             form.reset();
+        //         }
+        //     })
+        axios.post('https://textify-black.vercel.app/blog/add', data, {
+            withCredentials: true,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => {
+                if (response.status === 201) {
+                    Swal.fire({
+                        title: "Blog Added Successfully!",
+                        confirmButtonText: "OK"
+                    });
+                    form.reset();
+                }
             });
-            form.reset();
-        }
 
     }
 

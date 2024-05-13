@@ -9,7 +9,7 @@ const RecentBlogs = () => {
     const { data: recentPosts, isPending } = useQuery({
         queryKey: ['recentPosts'],
         queryFn: async () => {
-            const res = await axios.get('https://textify-black.vercel.app/blogs/recent');
+            const res = await axios.get('https://textify-black.vercel.app/blogs/recent', { withCredentials: true });
             return res.data;
         }
     })
