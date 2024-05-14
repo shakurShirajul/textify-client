@@ -5,6 +5,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { AuthContext } from '../../providers/AuthProviders';
 import { ToastContainer } from 'react-toastify';
 import axios from 'axios';
+import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
     const { googleSignIn, successToast, errorToast } = useContext(AuthContext);
@@ -37,6 +38,9 @@ const Login = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title>Login | Textify</title>
+            </Helmet>
             <div className="font-inter container mx-auto md:my-10">
                 <div className='md:w-[70%] rounded-3xl mx-auto bg-contain bg-no-repeat lg:shadow-xl' style={{ backgroundImage: 'url(https://i.postimg.cc/yxdjF4k1/register-Image.jpg)' }}>
                     <div className="md:flex md:justify-between">

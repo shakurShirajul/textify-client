@@ -4,6 +4,7 @@ import CardSkeleton from "../../components/CardSkeleton";
 import 'react-loading-skeleton/dist/skeleton.css'
 import axios from "axios";
 import Search from "../../components/Search";
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -49,6 +50,9 @@ const AllBlogs = () => {
 
     return (
         <div className="max-w-5xl mx-auto">
+            <Helmet>
+                <title>All Blogs | Textify</title>
+            </Helmet>
             {
                 isPending ?
                     (

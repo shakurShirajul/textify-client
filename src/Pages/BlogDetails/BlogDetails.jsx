@@ -6,6 +6,7 @@ import CardSkeleton from '../../components/CardSkeleton';
 import 'react-loading-skeleton/dist/skeleton.css'
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../providers/AuthProviders';
+import { Helmet } from 'react-helmet-async';
 
 const BlogDetails = () => {
 
@@ -37,6 +38,9 @@ const BlogDetails = () => {
 
     return (
         <div className='mt-10'>
+            <Helmet>
+                <title>Details | Textify</title>
+            </Helmet>
             {
                 isLoading ?
                     (

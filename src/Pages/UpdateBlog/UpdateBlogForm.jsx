@@ -3,9 +3,20 @@ import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../providers/AuthProviders';
 import { ToastContainer } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const UpdateBlogForm = ({ updateBlog }) => {
 
+
+    
+    const navigate = useNavigate();
+
+    const navigateToHomePage = () => {
+        setTimeout(() => {
+            navigate("/");
+            location.reload();
+        }, 2000)
+    }
 
     const { user, updateToast, successToast, errorToast } = useContext(AuthContext);
 
@@ -33,6 +44,7 @@ const UpdateBlogForm = ({ updateBlog }) => {
             .then(res => {
                 if (res.data.modifiedCount > 0) {
                     successToast("Blog Update Successfully");
+                    navigateToHomePage();
                 }
                 else {
                     errorToast("Something Went Wrong");

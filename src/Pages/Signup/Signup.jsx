@@ -4,6 +4,7 @@ import SignupForm from './SignupForm';
 import { ToastContainer } from 'react-toastify';
 import { AuthContext } from '../../providers/AuthProviders';
 import axios from 'axios';
+import { Helmet } from 'react-helmet-async';
 const Signup = () => {
     const { user, signUp, successToast, updateUser, errorToast } = useContext(AuthContext);
 
@@ -75,6 +76,9 @@ const Signup = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title>Sign Up | Textify</title>
+            </Helmet>
             <div className="font-inter container mx-auto md:my-10">
                 <div className='md:w-[70%] rounded-3xl mx-auto bg-containe bg-center bg-no-repeat lg:shadow-xl' style={{ backgroundImage: 'url(https://i.postimg.cc/yxdjF4k1/register-Image.jpg)' }}>
                     <div className="md:flex md:justify-between">

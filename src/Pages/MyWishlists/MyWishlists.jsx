@@ -6,6 +6,7 @@ import CardSkeleton from "../../components/CardSkeleton";
 import 'react-loading-skeleton/dist/skeleton.css'
 import { AuthContext } from "../../providers/AuthProviders";
 import { ToastContainer } from "react-toastify";
+import { Helmet } from "react-helmet-async";
 
 
 const MyWishlists = () => {
@@ -46,6 +47,9 @@ const MyWishlists = () => {
 
     return (
         <div className="mt-10">
+            <Helmet>
+                <title>My Wishlists | Textify</title>
+            </Helmet>
             <div className="max-w-6xl mx-auto">
                 {
                     isPending && <div className="grid grid-cols-3 gap-5">

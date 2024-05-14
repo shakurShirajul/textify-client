@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../../providers/AuthProviders';
+import { Helmet } from 'react-helmet-async';
 
 const UpdateBlog = () => {
 
@@ -34,6 +35,9 @@ const UpdateBlog = () => {
     console.log(updateBlog)
     return (
         <div className='mt-10'>
+            <Helmet>
+                <title>Update Blog | Textify</title>
+            </Helmet>
             <UpdateBlogForm updateBlog={updateBlog} />
         </div>
     );

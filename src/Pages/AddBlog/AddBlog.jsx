@@ -3,6 +3,7 @@ import AddBlogForm from './AddBlogForm';
 import { AuthContext } from '../../providers/AuthProviders';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 const AddBlog = () => {
 
@@ -64,6 +65,9 @@ const AddBlog = () => {
 
     return (
         <div className='mt-10 rounded-xl'>
+            <Helmet>
+                <title>Add Blog | Textify</title>
+            </Helmet>
             <AddBlogForm handleAddBlogSubmit={handleAddBlogSubmit} />
         </div>
     );
