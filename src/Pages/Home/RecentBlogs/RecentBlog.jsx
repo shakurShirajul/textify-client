@@ -8,6 +8,12 @@ import { Link } from "react-router-dom";
 const RecentBlog = ({ post }) => {
     const { _id, title, image, short_description, category, author_image, author_name, created_at } = post;
     const { user, updateToast, errorToast } = useContext(AuthContext)
+    
+    const currentDate = new Date(created_at);
+
+    const date = currentDate.getDate(); 
+    const month = currentDate.getMonth() + 1; 
+    const year = currentDate.getFullYear(); 
 
     const handleWishListButton = async () => {
         console.log(user?.email);
@@ -41,7 +47,7 @@ const RecentBlog = ({ post }) => {
                             <img className="w-11 h-11 rounded-full" src={author_image} alt="Rounded avatar" />
                             <div>
                                 <h1 className="text-base font-medium">{author_name}</h1>
-                                <h1>{created_at}</h1>
+                                <h1>{`${date}-${month}-${year}`}</h1>
                             </div>
                         </div>
                         <div>

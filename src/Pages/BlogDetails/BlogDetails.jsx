@@ -34,6 +34,12 @@ const BlogDetails = () => {
         author_email = blog?.author_email;
     }
 
+    const currentDate = new Date(blog?.created_at);
+    const date = currentDate.getDate();
+    const month = currentDate.getMonth() + 1;
+    const year = currentDate.getFullYear();
+
+
     console.log("here is shirajul", blog);
 
     return (
@@ -63,7 +69,7 @@ const BlogDetails = () => {
                                     />
                                     <div>
                                         <p className='text-base font-semibold'>{blog?.author_name}</p>
-                                        <p className='text-neutral-500 text-sm'>{blog?.created_at}</p>
+                                        <p className='text-neutral-500 text-sm'>{`${date}-${month}-${year}`}</p>
                                     </div>
                                 </div>
                                 <button className='font-martina text-green-700 font-medium text-xs p-2 text-center'>#{blog?.category}</button>

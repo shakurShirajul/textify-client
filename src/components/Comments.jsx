@@ -43,6 +43,7 @@ const Comments = ({ blog_id, author_email }) => {
             .catch(error => {
                 console.error('Error posting data:', error);
             });
+        event.target.reset();
     }
     return (
         <div>
