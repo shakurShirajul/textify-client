@@ -17,7 +17,7 @@ const UpdateBlog = () => {
     const { data: updateBlog, isPending, isLoading } = useQuery({
         queryKey: ['updateBlog'],
         queryFn: async () => {
-            const res = await axios.get(`http://localhost:5000/blog/${blog_id}?email=${user.email}`, {
+            const res = await axios.get(`https://textify-black.vercel.app/blog/${blog_id}?email=${user.email}`, {
                 withCredentials: true
             });
             // setUpdateBlog(res.data);

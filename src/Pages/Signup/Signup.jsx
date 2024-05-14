@@ -53,7 +53,7 @@ const Signup = () => {
                 .then((userCredential) => {
                     updateUser(name, url)
                         .then(() => {
-                            axios.post(`http://localhost:5000/setauthor`, {
+                            axios.post(`https://textify-black.vercel.app/setauthor`, {
                                 name,
                                 email,
                                 photo: url

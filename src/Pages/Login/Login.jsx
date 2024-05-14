@@ -21,7 +21,7 @@ const Login = () => {
     const handleGoogleSignIn = () => {
         googleSignIn()
             .then(result => {
-                axios.post(`http://localhost:5000/setauthor`, {
+                axios.post(`https://textify-black.vercel.app/setauthor`, {
                     email: result.user.email,
                     name: result.user.displayName,
                     photo: result.user.photoURL,

@@ -33,7 +33,7 @@ const AddBlog = () => {
             author_name,
             author_image,
         }
-        axios.post(`http://localhost:5000/blog/add?email=${user.email}`, {
+        axios.post(`https://textify-black.vercel.app/blog/add?email=${user.email}`, {
             title,
             image,
             category,

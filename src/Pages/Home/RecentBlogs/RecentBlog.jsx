@@ -16,7 +16,7 @@ const RecentBlog = ({ post }) => {
             return errorToast('Login For Add To Wishlist');
         }
 
-        const result = await axios.post(`http://localhost:5000/wishlist?email=${user.email}`, {
+        const result = await axios.post(`https://textify-black.vercel.app/wishlist?email=${user.email}`, {
             user_email: user.email,
             blog_id: post._id,
         }, {

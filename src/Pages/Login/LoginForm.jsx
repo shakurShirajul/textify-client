@@ -29,7 +29,7 @@ const LoginForm = ({ navigateToPage}) => {
                             <FloatingLabel variant="outlined" label="Password" type="password" name="password" />
                         </div>
                         <div>
-                            <input type="submit" value="Create Account" className="bg-[#20DC49] w-full py-3 rounded-md text-white" />
+                            <input type="submit" value="Login" className="bg-[#20DC49] w-full py-3 rounded-md text-white cursor-pointer" />
                         </div>
                     </div>
                 </form>

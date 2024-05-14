@@ -29,7 +29,7 @@ const UpdateBlogForm = ({ updateBlog }) => {
     const onSubmit = (data) => {
         const { title, image, category, short_description, long_description } = data;
 
-        axios.patch(`http://localhost:5000/blog/update/${updateBlog?._id}?email=${user.email}`, data, { withCredentials: true })
+        axios.patch(`https://textify-black.vercel.app/blog/update/${updateBlog?._id}?email=${user.email}`, data, { withCredentials: true })
             .then(res => {
                 if (res.data.modifiedCount > 0) {
                     successToast("Blog Update Successfully");
