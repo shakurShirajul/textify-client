@@ -13,7 +13,7 @@ const SignupForm = ({handleSignUpForm}) => {
                         <FloatingLabel variant="outlined" name="password" label="Password" type="password" />
                     </div>
                     <div>
-                        <input type="submit" value="Create Account" className="bg-[#20DC49] w-full py-3 rounded-md text-white"/>
+                        <input type="submit" value="Create Account" className="cursor-pointer bg-[#20DC49] w-full py-3 rounded-md text-white"/>
                     </div>
                 </form>
             </div>
