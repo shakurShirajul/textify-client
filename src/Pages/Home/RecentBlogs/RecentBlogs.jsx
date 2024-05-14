@@ -9,7 +9,12 @@ const RecentBlogs = () => {
     const { data: recentPosts, isPending } = useQuery({
         queryKey: ['recentPosts'],
         queryFn: async () => {
-            const res = await axios.get('https://textify-black.vercel.app/blogs/recent', { withCredentials: true });
+            const res = await axios.get('http://localhost:5000/blogs/recent', {
+                withCredentials: true,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
             return res.data;
         }
     })
@@ -21,7 +26,7 @@ const RecentBlogs = () => {
                     <CardSkeleton cards={6} />
                 </div>
             }
-            <div className="grid grid-cols-2 gap-5">
+            <div className="grid md:grid-cols-2 gap-5">
                 {
                     recentPosts?.map(post =>
                         <RecentBlog key={post._id} post={post}></RecentBlog>

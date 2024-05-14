@@ -4,23 +4,27 @@ import axios from 'axios';
 import Comments from '../../components/Comments';
 import CardSkeleton from '../../components/CardSkeleton';
 import 'react-loading-skeleton/dist/skeleton.css'
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { AuthContext } from '../../providers/AuthProviders';
 
 const BlogDetails = () => {
 
     const { id: blog_id } = useParams();
+    const { user } = useContext(AuthContext);
 
     const [blog, setBlog] = useState([])
+
+
+
     const { data: blogData, isPending, isLoading } = useQuery({
         queryKey: ['blog'],
         queryFn: async () => {
-            const res = await axios.get(`http://localhost:5000/blog/${blog_id}`, {
-                withCredentials: true, headers: {
-                    'content-type': 'application/json'
-                },
+            const res = await axios.get(`http://localhost:5000/blog/${blog_id}?email=${user.email}`, {
+                withCredentials: true
             });
-            setBlog(res.data);
             console.log("Hello", res);
+
+            setBlog(res.data);
             return res.data;
         }
     })
@@ -73,12 +77,16 @@ const BlogDetails = () => {
                                 <p className='text-xl font-newsreader'>{blog?.long_description}</p>
                             </div>
                             <div className='flex justify-end'>
-                                <Link type="button"
-                                    to={`/updateblog/${blog_id}`}
-                                    class="text-white bg-blue-700 hover:bg-blue-800  font-semibold rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none "
-                                >
-                                    View Details
-                                </Link>
+                                {
+                                    user.email === author_email && (
+                                        <Link type="button"
+                                            to={`/updateblog/${blog_id}`}
+                                            class="text-white bg-blue-700 hover:bg-blue-800  font-semibold rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none "
+                                        >
+                                            Update Blog
+                                        </Link>
+                                    )
+                                }
                             </div>
                             <Comments blog_id={blog_id} author_email={author_email} />
                         </div>

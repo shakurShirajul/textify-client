@@ -1,11 +1,78 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import image1 from '../../assets/images/registerPage.jpg'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FloatingLabel } from 'flowbite-react';
 import SignupForm from './SignupForm';
 import { ToastContainer } from 'react-toastify';
+import { AuthContext } from '../../providers/AuthProviders';
 const Signup = () => {
+    const { user, signUp, successToast, updateUser, errorToast } = useContext(AuthContext);
+
+    const navigate = useNavigate();
+
+    const navigateToHomePage = () => {
+        setTimeout(() => {
+            navigate("/");
+            location.reload();
+        }, 2000)
+    }
+
+    const handleSignUpForm = (event) => {
+        event.preventDefault();
+        const form = event.target;
+
+        const name = form.name.value;
+        const email = form.email.value;
+        const url = form.url.value;
+        const password = form.password.value;
+
+        const checkCapital = /[A-z]/;
+        const checkSpecialChar = /[!@#$%^&*(),.?":{}|<>]/;
+        const checkNumeric = /\d/;
+
+        // shakur@gmail.com
+        // shakurA@1
+
+        const hasCapital = checkCapital.test(password);
+        const hasSpecialChar = checkSpecialChar.test(password);
+        const hasNumeric = checkNumeric.test(password);
+        const isLengthValid = password.length >= 6;
+
+        if (!hasCapital) {
+            errorToast('Password must contain at least one uppercase letter.');
+        }
+        if (!hasSpecialChar) {
+            errorToast('Password must contain at least one Special character.');
+        }
+        if (!hasNumeric) {
+            errorToast('Password must be at least one Numeric character.');
+        }
+        if (!isLengthValid) {
+            errorToast('Password must be at least 6 characters long.');
+        }
+
+        if (hasCapital && hasSpecialChar && hasNumeric && isLengthValid) {
+            console.log(name, email, url, password);
+            signUp(email, password)
+                .then((userCredential) => {
+                    updateUser(name, url)
+                        .then(() => {
+                            successToast('Registration Successful')
+                            console.log(url);
+                            event.target.reset();
+                            navigateToHomePage();
+                        }).catch((error) => {
+                            errorToast(error.message)
+                        })
+                })
+                .catch((error) => {
+                    const errorMessage = error.message;
+                    errorToast(error.message)
+                })
+        }
+
+    }
     return (
         <div>
             <div className="font-inter container mx-auto md:my-10">
@@ -23,16 +90,16 @@ const Signup = () => {
                                 <div className="mb-9">
                                     <h1 className="font-grotsk text-5xl font-medium">Get Started With<span className="text-[#20DC49]">Textify</span></h1>
                                 </div>
-                                <SignupForm></SignupForm>
+                                <SignupForm handleSignUpForm={handleSignUpForm}></SignupForm>
                                 <div>
-                                    <p className="text-sm mt-2 text-center">Have an account? <Link to="/signin" className="text-[#20DC49]">Log In</Link></p>
+                                    <p className="text-sm mt-2 text-center">Have an account? <Link to="/login" className="text-[#20DC49]">Log In</Link></p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <ToastContainer/>
+            <ToastContainer />
         </div>
     );
 };

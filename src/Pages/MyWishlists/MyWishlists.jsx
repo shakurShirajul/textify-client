@@ -16,7 +16,12 @@ const MyWishlists = () => {
     const { data: myWish, isPending, refetch } = useQuery({
         queryKey: ['recentPosts'],
         queryFn: async () => {
-            const res = await axios.get(`https://textify-black.vercel.app/wishlists?email=${user.email}`);
+            const res = await axios.get(`http://localhost:5000/wishlists?email=${user.email}`, {
+                withCredentials: true,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
             return res.data;
         }
     })
@@ -25,7 +30,12 @@ const MyWishlists = () => {
 
     // Remove From Wishlist
     const handleWishlistDelete = (id) => {
-        axios.delete(`https://textify-black.vercel.app/wishlist/${id}`)
+        axios.delete(`http://localhost:5000/wishlist/${id}?email=${user.email}`, {
+            withCredentials: true,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
             .then(res => {
                 if (res.data.deletedCount > 0) {
                     updateToast("Remove Successfully");

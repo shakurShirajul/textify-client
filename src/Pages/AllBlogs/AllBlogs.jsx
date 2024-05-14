@@ -14,7 +14,12 @@ const AllBlogs = () => {
     const { data: blogs, isPending, isLoading } = useQuery({
         queryKey: ['blogs'],
         queryFn: async () => {
-            const res = await axios.get(`https://textify-black.vercel.app/blogs`);
+            const res = await axios.get(`http://localhost:5000/blogs`, {
+                withCredentials: true,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
             return res.data;
         }
     })
@@ -22,13 +27,23 @@ const AllBlogs = () => {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         const serachText = event.target.searchText.value;
-        const res = await axios.get(`https://textify-black.vercel.app/blogs/search?title=${serachText}`);
+        const res = await axios.get(`http://localhost:5000/blogs/search?title=${serachText}`, {
+            withCredentials: true,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
         queryClient.setQueryData(['blogs'], res.data);
     }
 
     const handleSelect = async (event) => {
         console.log(event.target.value);
-        const res = await axios.get(`https://textify-black.vercel.app/blogs?category=${event.target.value}`);
+        const res = await axios.get(`http://localhost:5000/blogs?category=${event.target.value}`, {
+            withCredentials: true,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
         queryClient.setQueryData(['blogs'], res.data);
     }
 
@@ -37,21 +52,24 @@ const AllBlogs = () => {
             {
                 isPending ?
                     (
-                        <div className="grid grid-cols-2 gap-2">
+                        <div className="grid md:grid-cols-2 gap-2">
                             <CardSkeleton cards={6} />
                         </div>
                     ) : (
                         <div>
-                            <div className="mb-10">
+                            <div className="mb-10 mx-5 md:mx-0">
                                 <Search handleFormSubmit={handleFormSubmit} handleSelect={handleSelect} />
                             </div>
-                            <div className="grid grid-cols-2 gap-5">
-                                {
-                                    blogs?.map(post =>
-                                        <RecentBlog key={post._id} post={post}></RecentBlog>
-                                    )
-                                }
+                            <div className="mx-5 md:mx-0">
+                                <div className="grid md:grid-cols-2 gap-5">
+                                    {
+                                        blogs?.map(post =>
+                                            <RecentBlog key={post._id} post={post}></RecentBlog>
+                                        )
+                                    }
+                                </div>
                             </div>
+
                         </div>
                     )
             }

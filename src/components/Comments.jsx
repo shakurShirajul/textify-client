@@ -14,7 +14,11 @@ const Comments = ({ blog_id, author_email }) => {
     const { data: comments, isPending, isLoading, refetch } = useQuery({
         queryKey: ['comments'],
         queryFn: async () => {
-            const res = await axios.get(`https://textify-black.vercel.app/comments/${blog_id}`);
+            const res = await axios.get(`http://localhost:5000/comments/${blog_id}?email=${user.email}`, {
+                withCredentials: true, headers: {
+                    'content-type': 'application/json'
+                },
+            });
             return res.data;
         }
     })
@@ -22,13 +26,17 @@ const Comments = ({ blog_id, author_email }) => {
     const handleCommentSubmit = (event) => {
         event.preventDefault();
         const content = event.target.comment.value;
-        axios.post(`https://textify-black.vercel.app/comment`, {
+        axios.post(`http://localhost:5000/comment?email=${user.email}`, {
             blog_id,
             content,
             commenter_name: user.displayName,
             commenter_email: user.email,
             commenter_image: user.photoURL,
-        }, { headers: { 'Content-Type': 'application/json' } })
+        }, {
+            withCredentials: true, headers: {
+                'content-type': 'application/json'
+            },
+        })
             .then(response => {
                 refetch();
             })

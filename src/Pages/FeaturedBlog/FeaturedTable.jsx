@@ -12,7 +12,12 @@ const FeaturedTable = () => {
     const { data: tableDatas, isPending } = useQuery({
         queryKey: ["tableData"],
         queryFn: async () => {
-            const res = await axios.get(`https://textify-black.vercel.app/blogs/featured`);
+            const res = await axios.get(`http://localhost:5000/blogs/featured`,{
+                withCredentials: true,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
             setTableData(res.data);
             return res.data;
         },

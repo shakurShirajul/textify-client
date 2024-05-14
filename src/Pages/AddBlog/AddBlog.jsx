@@ -16,10 +16,11 @@ const AddBlog = () => {
         const category = form.category.value;
         const short_description = form.shortDescription.value;
         const long_description = form.longDescription.value;
+
         // Data From AuthContext
-        const author_email = user.email;
-        const author_name = user.name;
-        const author_image = user.photoURL
+        const author_email = user?.email;
+        const author_name = user?.displayName;
+        const author_image = user?.photoURL
 
         // console.log(long_description)
         const data = {
@@ -32,26 +33,19 @@ const AddBlog = () => {
             author_name,
             author_image,
         }
-
-        // axios.post('https://textify-black.vercel.app/blog/add', data, { withCredentials: true }, {
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     }
-        // })
-        //     .then(response => {
-        //         if (response.status === 201) {
-        //             Swal.fire({
-        //                 title: "Blog Added Successfully!",
-        //                 confirmButtonText: "OK"
-        //             });
-        //             form.reset();
-        //         }
-        //     })
-        axios.post('https://textify-black.vercel.app/blog/add', data, {
-            withCredentials: true,
-            headers: {
-                'Content-Type': 'application/json'
-            }
+        axios.post(`http://localhost:5000/blog/add?email=${user.email}`, {
+            title,
+            image,
+            category,
+            short_description,
+            long_description,
+            author_email,
+            author_name,
+            author_image,
+        }, {
+            withCredentials: true, headers: {
+                'content-type': 'application/json'
+            },
         })
             .then(response => {
                 if (response.status === 201) {
@@ -61,6 +55,9 @@ const AddBlog = () => {
                     });
                     form.reset();
                 }
+            })
+            .catch(error => {
+                console.error('Error posting data:', error);
             });
 
     }

@@ -10,11 +10,13 @@ import BlogDetails from "../Pages/BlogDetails/BlogDetails";
 import UpdateBlog from "../Pages/UpdateBlog/UpdateBlog";
 import FeaturedBlog from "../Pages/FeaturedBlog/FeaturedBlog";
 import PrivateRoute from "./PrivateRoute";
+import PageNotFound from "../Pages/PageNotFound/PageNotFound";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Root></Root>,
+        errorElement: <PageNotFound/>,
         children: [
             {
                 path: "/",

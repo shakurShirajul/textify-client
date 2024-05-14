@@ -66,7 +66,7 @@ const Login = () => {
                                 </div>
                                 <LoginForm navigateToPage={navigateToPage}></LoginForm>
                                 <div>
-                                    <p className="text-sm mt-2 text-center">Have an account? <Link to="/signin" className="text-[#20DC49]">Log In</Link></p>
+                                    <p className="text-sm mt-2 text-center">Create Account <Link to="/signup" className="text-[#20DC49]">Register</Link></p>
                                 </div>
                             </div>
                         </div>

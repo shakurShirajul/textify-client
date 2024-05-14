@@ -13,9 +13,14 @@ const RecentBlog = ({ post }) => {
 
     const handleWishListButton = async () => {
 
-        const result = await axios.post('https://textify-black.vercel.app/wishlist', {
+        const result = await axios.post('http://localhost:5000/wishlist', {
             user_email: user.email,
             blog_id: post._id,
+        }, {
+            withCredentials: true,
+            headers: {
+                'Content-Type': 'application/json'
+            }
         });
         if (result.status === 208) {
             errorToast('Already Added To Wishlist');
@@ -43,7 +48,7 @@ const RecentBlog = ({ post }) => {
                         <p className="text-right">Categrory: <span>{category}</span></p>
                     </div>
                     <div className="flex justify-end gap-2">
-                        <button onClick={handleWishListButton} type="button" class="text-white bg-blue-700 hover:bg-blue-800  font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none ">Add to Wishlist</button>
+                        <button onClick={handleWishListButton} type="button" class="text-white bg-blue-700 hover:bg-blue-800  font-medium rounded-lg text-sm px-5 md:py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none ">Add to Wishlist</button>
                         <Link type="button"
                             to={`/blogdetails/${_id}`}
                             class="focus:outline-none text-white bg-green-600 hover:bg-green-800  font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-green-600 dark:hover:bg-green-700 ">View Details</Link>

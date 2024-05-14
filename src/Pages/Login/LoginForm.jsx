@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../providers/AuthProviders';
 
 const LoginForm = ({ navigateToPage}) => {
+    
     const { signIn, successToast, errorToast } = useContext(AuthContext);
     const handleFormSubmit = (event) => {
         event.preventDefault();
