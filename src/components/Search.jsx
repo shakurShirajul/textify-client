@@ -6,12 +6,17 @@ const Search = ({ handleFormSubmit, handleSelect }) => {
                     <select
                         onChange={handleSelect}
                         className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg  hover:bg-gray-200  focus:outline-none focus:ring-gray-100">
-                        <option selected disabled value="">All categories</option>
+                        <option className="text-green-600" selected disabled value="">Choose a Category</option>
                         <option value="Travel">Travel</option>
                         <option value="Productivity">Productivity</option>
                         <option value="Creativity">Creativity</option>
-                        <option value="Health & Wellness">Health</option>
-                        <option value="Creativity">Creativity</option>
+                        <option value="Health">Health</option>
+                        <option value="Technology">Technology</option>
+                        <option value="AI">AI</option>
+                        <option value="Programming">Programming</option>
+                        <option value="Lifestyle">Lifestyle</option>
+                        <option value="History">History</option>
+                        <option value="Science">Science</option>
                     </select>
                     <form
                         onSubmit={handleFormSubmit}

@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
 import { AuthContext } from '../../providers/AuthProviders';
 import { ToastContainer } from 'react-toastify';
+import axios from 'axios';
 
 const Login = () => {
     const { googleSignIn, successToast, errorToast } = useContext(AuthContext);
@@ -20,8 +21,14 @@ const Login = () => {
     const handleGoogleSignIn = () => {
         googleSignIn()
             .then(result => {
+                axios.post(`http://localhost:5000/setauthor`, {
+                    email: result.user.email,
+                    name: result.user.displayName,
+                    photo: result.user.photoURL,
+                }, { withCredentials: true })
                 successToast('LOGIN SUCCESSFUL')
                 navigateToPage();
+
             })
             .catch((error) => {
                 errorToast(error.message)
@@ -73,7 +80,7 @@ const Login = () => {
                     </div>
                 </div>
             </div>
-            <ToastContainer/>
+            <ToastContainer />
         </div>
     );
 };

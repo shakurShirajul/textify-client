@@ -6,15 +6,11 @@ import Footer from '../components/Footer';
 const Root = () => {
     return (
         <div>
-            <div className='container mx-auto '>
-                <div className='sticky'>
-                    <Nav></Nav>
-                </div>
-                <div className='mt-20 '>
-                    <Outlet></Outlet>
-                </div>
+            <Nav></Nav>
+            <div className=''>
+                <Outlet></Outlet>
             </div>
-            <Footer/>
+            <Footer />
         </div>
     );
 };

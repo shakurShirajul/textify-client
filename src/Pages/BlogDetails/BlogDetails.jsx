@@ -22,8 +22,6 @@ const BlogDetails = () => {
             const res = await axios.get(`http://localhost:5000/blog/${blog_id}?email=${user.email}`, {
                 withCredentials: true
             });
-            console.log("Hello", res);
-
             setBlog(res.data);
             return res.data;
         }
@@ -38,7 +36,7 @@ const BlogDetails = () => {
     console.log("here is shirajul", blog);
 
     return (
-        <div className=''>
+        <div className='mt-10'>
             {
                 isLoading ?
                     (

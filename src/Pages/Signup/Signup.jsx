@@ -1,11 +1,9 @@
 import React, { useContext } from 'react';
-import { FcGoogle } from 'react-icons/fc';
-import image1 from '../../assets/images/registerPage.jpg'
 import { Link, useNavigate } from 'react-router-dom';
-import { FloatingLabel } from 'flowbite-react';
 import SignupForm from './SignupForm';
 import { ToastContainer } from 'react-toastify';
 import { AuthContext } from '../../providers/AuthProviders';
+import axios from 'axios';
 const Signup = () => {
     const { user, signUp, successToast, updateUser, errorToast } = useContext(AuthContext);
 
@@ -31,9 +29,6 @@ const Signup = () => {
         const checkSpecialChar = /[!@#$%^&*(),.?":{}|<>]/;
         const checkNumeric = /\d/;
 
-        // shakur@gmail.com
-        // shakurA@1
-
         const hasCapital = checkCapital.test(password);
         const hasSpecialChar = checkSpecialChar.test(password);
         const hasNumeric = checkNumeric.test(password);
@@ -58,6 +53,11 @@ const Signup = () => {
                 .then((userCredential) => {
                     updateUser(name, url)
                         .then(() => {
+                            axios.post(`http://localhost:5000/setauthor`, {
+                                name,
+                                email,
+                                photo: url
+                            }, { withCredentials: true })
                             successToast('Registration Successful')
                             console.log(url);
                             event.target.reset();

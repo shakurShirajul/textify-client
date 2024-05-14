@@ -45,19 +45,21 @@ const MyWishlists = () => {
     }
 
     return (
-        <div>
-            {
-                isPending && <div className="grid grid-cols-2 gap-2">
-                    <CardSkeleton cards={6} />
-                </div>
-            }
-            <div className="grid grid-cols-2">
+        <div className="mt-10">
+            <div className="max-w-6xl mx-auto">
                 {
-                    myWish?.map(item =>
-                        <MyWishlist item={item}
-                            handleWishlistDelete={handleWishlistDelete} />
-                    )
+                    isPending && <div className="grid grid-cols-3 gap-5">
+                        <CardSkeleton cards={6} />
+                    </div>
                 }
+                <div className="grid grid-cols-3 gap-5">
+                    {
+                        myWish?.map(item =>
+                            <MyWishlist item={item}
+                                handleWishlistDelete={handleWishlistDelete} />
+                        )
+                    }
+                </div>
             </div>
             <ToastContainer />
         </div>

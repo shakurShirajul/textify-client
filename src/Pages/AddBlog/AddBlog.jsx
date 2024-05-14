@@ -63,7 +63,7 @@ const AddBlog = () => {
     }
 
     return (
-        <div>
+        <div className='mt-10 rounded-xl'>
             <AddBlogForm handleAddBlogSubmit={handleAddBlogSubmit} />
         </div>
     );

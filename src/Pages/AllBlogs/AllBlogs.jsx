@@ -52,16 +52,16 @@ const AllBlogs = () => {
             {
                 isPending ?
                     (
-                        <div className="grid md:grid-cols-2 gap-2">
+                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
                             <CardSkeleton cards={6} />
                         </div>
                     ) : (
                         <div>
-                            <div className="mb-10 mx-5 md:mx-0">
+                            <div className="my-10 mx-5 md:mx-0">
                                 <Search handleFormSubmit={handleFormSubmit} handleSelect={handleSelect} />
                             </div>
                             <div className="mx-5 md:mx-0">
-                                <div className="grid md:grid-cols-2 gap-5">
+                                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
                                     {
                                         blogs?.map(post =>
                                             <RecentBlog key={post._id} post={post}></RecentBlog>
