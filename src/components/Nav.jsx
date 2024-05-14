@@ -6,7 +6,7 @@ import { AuthContext } from "../providers/AuthProviders";
 const Nav = () => {
     const { user, logOut } = useContext(AuthContext)
 
-    const activeButton = "border-b-2 border-[#0B6EFE]  text-[#0B6EFE] font-semibold";
+    const activeButton = "border-b-2 border-green-600  text-green-600 font-semibold";
     const buttonStyle = "text-lg font-normal"
 
     return (
