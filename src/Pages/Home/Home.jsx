@@ -3,6 +3,7 @@ import Newsletter from "../../components/Newsletter ";
 import AuthorCards from "./AuthorCard/AuthorCards";
 import Banner from "./Banner/Banner";
 import RecentBlogs from "./RecentBlogs/RecentBlogs";
+import Counters from "../../components/Counter/Counters";
 
 const Home = () => {
     return (
@@ -10,10 +11,11 @@ const Home = () => {
             <Helmet>
                 <title>Home | Textify</title>
             </Helmet>
-            <Banner/>
-            <RecentBlogs/>
-            <Newsletter/>
-            <AuthorCards/>
+            <Banner />
+            <Counters />
+            <RecentBlogs />
+            <Newsletter />
+            <AuthorCards />
         </div>
     );
 };

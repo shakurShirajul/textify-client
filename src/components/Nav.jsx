@@ -27,7 +27,7 @@ const Nav = () => {
                                         <img className="w-10 h-10 rounded-full" src={user.photoURL} alt="Rounded avatar" />
                                         <button
                                             onClick={logOut}
-                                            className="text-white bg-[#d33] hover:bg-[#d33]  font-medium rounded-lg text-sm px-5 md:py-2.5 dark:bg-[#d33] dark:hover:bg-[#d33] focus:outline-none ">
+                                            className="focus:outline-none text-white bg-[#d33]  font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-[#d33]">
                                             Logout
                                         </button>
                                     </div>
@@ -35,7 +35,7 @@ const Nav = () => {
                                 :
                                 (
                                     <div className="flex items-center gap-2">
-                                        <Link to='/login'><button className="text-white bg-blue-700 hover:bg-blue-800  font-medium rounded-lg text-sm px-5 md:py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none ">Login</button></Link>
+                                        <Link to='/login'><button className="focus:outline-none text-white bg-blue-700 hover:bg-blue-800  font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-green-600 dark:hover:bg-green-700 ">Login</button></Link>
                                         <Link to='/signup'> <button className="focus:outline-none text-white bg-green-600 hover:bg-green-800  font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-green-600 dark:hover:bg-green-700 ">Register</button></Link>
                                     </div>
                                 )
