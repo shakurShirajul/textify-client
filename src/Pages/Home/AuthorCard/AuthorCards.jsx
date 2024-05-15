@@ -5,8 +5,8 @@ import { useState } from "react";
 
 const AuthorCards = () => {
 
-    const [authorsData, setAuthorsData] = useState([])
-    const { data: author, isPending } = useQuery({
+    // const [authorsData, setAuthorsData] = useState([])
+    const { data: authorsData = [], isPending } = useQuery({
         queryKey: ['authorsData'],
         queryFn: async () => {
             const res = await axios.get('https://textify-black.vercel.app/authors', {
@@ -15,7 +15,7 @@ const AuthorCards = () => {
                     'Content-Type': 'application/json'
                 }
             });
-            setAuthorsData(res.data);
+            // setAuthorsData(res.data);
             return res.data;
         }
     })

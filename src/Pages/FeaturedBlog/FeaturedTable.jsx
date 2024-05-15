@@ -30,7 +30,7 @@ const FeaturedTable = () => {
         }),
         columnHelper.accessor("title", {
             cell: (info) => <span>{info.getValue()}</span>,
-            header: "Blog",
+            header: "Blog Title",
         }),
         columnHelper.accessor("author_name", {
             cell: (info) => <span>{info.getValue()}</span>,

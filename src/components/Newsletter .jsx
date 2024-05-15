@@ -27,8 +27,8 @@ const Newsletter = () => {
             <div className="max-w-7xl mx-auto mt-20">
                 <div className="border rounded-xl p-5 md:p-10  bg-white">
                     <div className="space-y-2 md:space-y-0 md:flex justify-between gap-10">
-                        <div className="space-y-2 lg:space-y-5 ">
-                            <h1 className="text-xl md:text-5xl font-grotsk font-medium">Subscribe Our Newsletter</h1>
+                        <div className="flex-1 space-y-2 lg:space-y-5 ">
+                            <h1 className=" text-xl md:text-5xl font-grotsk font-medium">Subscribe Our Newsletter</h1>
                             <div className="space-y-1">
                                 <h1 className="font-medium text-lg md:text-xl font-inter">Get more updates...</h1>
                                 <p className="font-inter max-w-xl text-gray-500 font-medium">Do you want to get notified when a new blog is added to textify? Sign up for our newsletter and you'll be among the first to find out about new blogs</p>

@@ -42,11 +42,12 @@ const Login = () => {
                 <title>Login | Textify</title>
             </Helmet>
             <div className="font-inter container mx-auto md:my-10">
-                <div className='md:w-[70%] rounded-3xl mx-auto bg-contain bg-no-repeat lg:shadow-xl' style={{ backgroundImage: 'url(https://i.postimg.cc/yxdjF4k1/register-Image.jpg)' }}>
+                <div className='md:w-[70%] rounded-3xl mx-auto bg-contain bg-no-repeat lg:shadow-xl' style={{ backgroundImage: 'url(https://i.postimg.cc/xCc4fQHn/aaron-burden-x-G8-IQMq-MITM-unsplash.jpg)' }}>
                     <div className="md:flex md:justify-between">
                         <div className="hidden lg:flex items-center md:w-[55%]">
                             <div className="p-10 text-white font-medium">
-                                {/*  */}
+                                <p className='text-5xl font-bold font-grotsk'>Welcome to Textify</p>
+                               <h1 className="text-xl font-bold ">Sign in to unlock exclusive content, connect with fellow readers, and join the conversation.</h1>
                             </div>
                         </div>
                         <div className="w-full lg:w-[45%]">

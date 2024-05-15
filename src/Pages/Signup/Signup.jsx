@@ -80,12 +80,13 @@ const Signup = () => {
                 <title>Sign Up | Textify</title>
             </Helmet>
             <div className="font-inter container mx-auto md:my-10">
-                <div className='md:w-[70%] rounded-3xl mx-auto bg-containe bg-center bg-no-repeat lg:shadow-xl' style={{ backgroundImage: 'url(https://i.postimg.cc/yxdjF4k1/register-Image.jpg)' }}>
+                <div className='md:w-[70%] rounded-3xl mx-auto bg-containe bg-center bg-no-repeat lg:shadow-xl' style={{ backgroundImage: 'url(https://i.postimg.cc/xCc4fQHn/aaron-burden-x-G8-IQMq-MITM-unsplash.jpg)' }}>
                     <div className="md:flex md:justify-between">
                         <div className="hidden lg:flex items-center md:w-[55%]">
                             <div className="p-10 text-white font-medium">
                                 <h1 className="text-4xl md:text-8xl">
-                                    {/* Unleash your creativity! */}
+                                    <p className='text-5xl font-bold font-grotsk'>Join Our Blog Community!</p>
+                                    <h1 className="text-xl font-bold ">Ready to embark on a journey of creativity, connection, and inspiration</h1>
                                 </h1>
                             </div>
                         </div>
