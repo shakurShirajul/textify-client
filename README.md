@@ -36,7 +36,7 @@ To get a local copy up and running follow these simple steps.
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/craftoopia.git
+   git clone https://github.com/shakurShirajul/textify-client.git
 2. Navigate to the project directory:
    ```bash
    cd craftoopia
