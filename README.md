@@ -1,5 +1,5 @@
-Website Name: Textify
-Website Live Link : https://texttify.netlify.app/
+# Website Name: Textify
+# Website Live Link : https://texttify.netlify.app/
 
 # Project Overview
 
