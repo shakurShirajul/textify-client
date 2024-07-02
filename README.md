@@ -1,7 +1,7 @@
 Website Name: Textify
 Website Live Link : https://texttify.netlify.app/
 
-# Textify
+# Project Overview
 
 Textify is a dynamic blogging platform designed to empower users to create, share, and engage with content effortlessly. Built with a clean and intuitive interface, it offers a seamless experience for both bloggers and readers alike.
 
