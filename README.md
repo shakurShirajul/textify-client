@@ -39,7 +39,7 @@ To get a local copy up and running follow these simple steps.
    git clone https://github.com/shakurShirajul/textify-client.git
 2. Navigate to the project directory:
    ```bash
-   cd craftoopia
+   cd textify-client
 3. Install dependencies:
    ```bash
    npm install
