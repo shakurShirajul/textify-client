@@ -76,11 +76,7 @@ const BlogDetails = () => {
 
           <div className="space-y-3 border-b">
             <div className="space-y-2">
-              <img
-                className="aspect-auto rounded-lg"
-                src={blog?.image}
-                alt=""
-              />
+              <img className="w-full rounded-lg" src={blog?.image} alt="" />
               <h1 className="font-martina text-green-700 font-medium text-xs text-right">
                 #{blog?.category}
               </h1>
