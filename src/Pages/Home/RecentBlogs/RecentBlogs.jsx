@@ -6,7 +6,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 
 const RecentBlogs = () => {
 
-    const { data: recentPosts, isPending } = useQuery({
+    const { data: recentPosts = [], isPending } = useQuery({
         queryKey: ['recentPosts'],
         queryFn: async () => {
             const res = await axios.get('https://textify-black.vercel.app/blogs/recent', {
