@@ -13,49 +13,65 @@ import PrivateRoute from "./PrivateRoute";
 import PageNotFound from "../Pages/PageNotFound/PageNotFound";
 
 const router = createBrowserRouter([
-    {
+  {
+    path: "/",
+    element: <Root></Root>,
+    // errorElement: <PageNotFound />,
+    children: [
+      {
         path: "/",
-        element: <Root></Root>,
-        errorElement: <PageNotFound/>,
-        children: [
-            {
-                path: "/",
-                element: <Home></Home>
-            },
-            {
-                path: "/login",
-                element: <Login></Login>
-            },
-            {
-                path: "/signup",
-                element: <Signup></Signup>
-            },
-            {
-                path: "/addblog",
-                element: <PrivateRoute><AddBlog></AddBlog></PrivateRoute>,
-            },
-            {
-                path: "/mywishlist",
-                element: <PrivateRoute><MyWishlists /></PrivateRoute>,
-            },
-            {
-                path: "/allblogs",
-                element: <AllBlogs />
-            },
-            {
-                path: "/blogdetails/:id",
-                element: <PrivateRoute><BlogDetails /></PrivateRoute>,
-            },
-            {
-                path: "/updateblog/:id",
-                element: <PrivateRoute><UpdateBlog /></PrivateRoute>
-            },
-            {
-                path: "/featuredblog",
-                element: <FeaturedBlog />
-            }
-        ]
-    }
-])
+        element: <Home></Home>,
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/signup",
+        element: <Signup></Signup>,
+      },
+      {
+        path: "/addblog",
+        element: (
+          <PrivateRoute>
+            <AddBlog></AddBlog>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/mywishlist",
+        element: (
+          <PrivateRoute>
+            <MyWishlists />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/allblogs",
+        element: <AllBlogs />,
+      },
+      {
+        path: "/blogdetails/:id",
+        element: (
+          <PrivateRoute>
+            <BlogDetails />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/updateblog/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateBlog />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/featuredblog",
+        element: <FeaturedBlog />,
+      },
+    ],
+  },
+]);
 
 export default router;

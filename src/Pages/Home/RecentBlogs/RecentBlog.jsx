@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProviders";
 import { ToastContainer } from "react-toastify";
 import { Link } from "react-router-dom";
+import { BookmarkPlus } from "lucide-react";
 
 const RecentBlog = ({ post }) => {
   const {
@@ -65,18 +66,27 @@ const RecentBlog = ({ post }) => {
                 src={author_image}
                 alt="Rounded avatar"
               />
-              <div>
-                <h1 className="text-base font-medium">{author_name}</h1>
-                <h1 className="text-xs">{`${date}-${month}-${year}`}</h1>
+              <div className="flex items-center justify-between w-full">
+                <div>
+                  <h1 className="text-base font-medium">{author_name}</h1>
+                  <h1 className="text-xs">{`${date}-${month}-${year}`}</h1>
+                </div>
+                <div>
+                  <button onClick={handleWishListButton}>
+                    <BookmarkPlus className="" />
+                  </button>
+                </div>
               </div>
             </div>
             <div>
-              <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white font-grotsk line-clamp-1">
-                {title}
-              </h5>
-              <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 line-clamp-2">
-                {short_description}
-              </p>
+              <div>
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white font-grotsk line-clamp-1">
+                  {title}
+                </h5>
+                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 line-clamp-2">
+                  {short_description}
+                </p>
+              </div>
             </div>
             <div>
               <p className="text-right text-sm">
@@ -84,13 +94,12 @@ const RecentBlog = ({ post }) => {
               </p>
             </div>
             <div className="flex justify-end gap-2">
-              <button
-                onClick={handleWishListButton}
+              {/* <button
                 type="button"
                 className="text-white bg-blue-700 hover:bg-blue-800  font-medium rounded-lg text-sm px-5 md:py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none "
               >
                 Add to Wishlist
-              </button>
+              </button> */}
               <Link
                 type="button"
                 to={`/blogdetails/${_id}`}
