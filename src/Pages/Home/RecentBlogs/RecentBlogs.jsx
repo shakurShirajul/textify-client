@@ -26,7 +26,7 @@ const RecentBlogs = () => {
       <h1 className="font-grotsk text-4xl font-semibold text-center mb-5">
         Recent Blogs
       </h1>
-      <div className="max-w-xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         {isPending && (
           <div className="grid grid-cols-3 gap-2">
             <CardSkeleton cards={6} />
