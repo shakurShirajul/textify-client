@@ -53,13 +53,13 @@ const RecentBlog = ({ post }) => {
   return (
     <div>
       <div className="max-w-lg  mx-auto font-inter ">
-        <div className="border rounded-xl p-5 space-y-4 bg-white ">
+        <div className="border rounded-xl p-5 space-y-3 bg-white ">
           <img
             className="object-cover w-full rounded-xl aspect-video"
             src={image}
             alt=""
           />
-          <div className="flex flex-col justify-between leading-normal gap-4">
+          <div className="flex flex-col justify-between leading-normal gap-2">
             <div className="flex items-center gap-2">
               <img
                 className="w-11 h-11 rounded-full"
@@ -73,7 +73,7 @@ const RecentBlog = ({ post }) => {
                 </div>
                 <div>
                   <button onClick={handleWishListButton}>
-                    <BookmarkPlus className="" />
+                    <BookmarkPlus className="text-green-600" />
                   </button>
                 </div>
               </div>
@@ -89,8 +89,8 @@ const RecentBlog = ({ post }) => {
               </div>
             </div>
             <div>
-              <p className="text-right text-sm">
-                Categrory: <span>{category}</span>
+              <p className="text-right text-xs">
+                #<span>{category}</span>
               </p>
             </div>
             <div className="flex justify-end gap-2">
@@ -103,7 +103,7 @@ const RecentBlog = ({ post }) => {
               <Link
                 type="button"
                 to={`/blogdetails/${_id}`}
-                className="focus:outline-none text-white bg-green-600 hover:bg-green-800  font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-green-600 dark:hover:bg-green-700 "
+                className="focus:outline-none text-white bg-green-600 w-full text-center hover:bg-green-800  font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-green-600 dark:hover:bg-green-700 "
               >
                 View Details
               </Link>
