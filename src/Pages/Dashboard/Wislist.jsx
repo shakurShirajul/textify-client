@@ -1,22 +1,22 @@
-import axios from "axios";
-import { useContext, useEffect, useState } from "react";
-import MyWishlist from "./MyWishlist";
 import { useQuery } from "@tanstack/react-query";
-import CardSkeleton from "../../components/CardSkeleton";
-import "react-loading-skeleton/dist/skeleton.css";
+import DashboardTitle from "../../components/DashboardTitle";
+import MyWishlist from "../MyWishlists/MyWishlist";
+import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
-import { ToastContainer } from "react-toastify";
+import CardSkeleton from "../../components/CardSkeleton";
 import { Helmet } from "react-helmet-async";
+import { ToastContainer } from "react-toastify";
+import MyWishlists from "../MyWishlists/MyWishlists";
 
-const MyWishlists = () => {
+const Wishlist = () => {
   const { user, updateToast, errorToast } = useContext(AuthContext);
 
   const {
-    data: myWish = [],
+    data: myWishlists = [],
     isLoading,
     refetch,
   } = useQuery({
-    queryKey: ["recentPosts"],
+    queryKey: ["myWishlist"],
     queryFn: async () => {
       const res = await axios.get(
         `https://textify-black.vercel.app/wishlists?email=${user.email}`,
@@ -52,29 +52,16 @@ const MyWishlists = () => {
   };
 
   return (
-    <div className="mt-10 min-h-screen ">
+    <div className="bg-white w-full h-full rounded-xl p-5">
       <Helmet>
-        <title>My Wishlists | Textify</title>
+        <title>Dashboard | Wishlist</title>
       </Helmet>
-      <div className="max-w-7xl mx-auto">
-        {isLoading ? (
-          <div className="grid grid-cols-3 gap-5">
-            <CardSkeleton cards={6} />
-          </div>
-        ) : (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 w-full">
-            {myWish?.map((item) => (
-              <MyWishlist
-                item={item}
-                handleWishlistDelete={handleWishlistDelete}
-              />
-            ))}
-          </div>
-        )}
+      <div className="space-y-5">
+        <DashboardTitle title={"My Wishlist"} />
+        <MyWishlists />
+        <ToastContainer />
       </div>
-      <ToastContainer />
     </div>
   );
 };
-
-export default MyWishlists;
+export default Wishlist;
